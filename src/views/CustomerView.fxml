@@ -46,7 +46,7 @@
 <!--    </rowConstraints> -->
 <!-- </GridPane> -->
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerController">
 	<children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
@@ -71,7 +71,7 @@
                            <children>
                               <VBox maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                              		<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewAccounts" text="List Minions" VBox.vgrow="ALWAYS" />
+                              		<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinions" text="List Minions" VBox.vgrow="ALWAYS" />
                               		<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="List Minions &amp; Basic Info" />
                                  </children>
                               </VBox>
@@ -88,7 +88,7 @@
                            <children>
                               <VBox maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewAccounts" text="Minion Basic Info" VBox.vgrow="ALWAYS" />
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinionBasicInfo" text="Minion Basic Info" VBox.vgrow="ALWAYS" />
                                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Minion Processes" />
                                  </children>
                               </VBox>

@@ -2,7 +2,10 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import Dao.DBConnect;
@@ -21,6 +24,8 @@ import models.CustomerModel;
 public class CustomerController extends DBConnect implements Initializable {
 
 	static int user_id;
+	private CustomerModel cm;
+	private Map<Integer, CustomerModel> minions;
 	
     @FXML private TableView<CustomerModel> tableMinions;
     @FXML private TableColumn<CustomerModel, String> minionId;
@@ -68,6 +73,7 @@ public class CustomerController extends DBConnect implements Initializable {
     }
  
 	public CustomerController() {
+		cm = new CustomerModel();
      
 		/*Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("From Customer controller");
@@ -83,11 +89,27 @@ public class CustomerController extends DBConnect implements Initializable {
 	
 	public void viewAccounts( ) throws IOException {
 		
-		CustomerModel cm = new CustomerModel();
-    	tableMinions.getItems().setAll(cm.getAccounts(CustomerController.user_id )); //load table data from CustomerModel list
-		tableMinions.setVisible(true); //set tableview to visible
-		System.out.println(cm.getCustomerInfo());
+//		CustomerModel cm = new CustomerModel();
+//    	tableMinions.getItems().setAll(cm.getAccounts(CustomerController.user_id )); //load table data from CustomerModel list
+//		tableMinions.setVisible(true); //set tableview to visible
+//		System.out.println(cm.getCustomerInfo());
 		 
+	}
+	
+	public void queryMinions() {
+		minions = cm.queryMinionList();
+		tableMinions.getItems().setAll(minions.values());
+	}
+	
+	public void queryMinionBasicInfo() {
+		int minionId = tableMinions.getSelectionModel().getSelectedItem().getMinionId();
+		if (minions.containsKey(minionId)) {
+			CustomerModel minion = cm.queryMinionBasicInfo(minionId);
+			if(minion!=null) {
+				minions.put(minionId, minion);
+				tableMinions.getItems().setAll(minions.values());
+			}
+		}
 	}
 	
 	public void logout() {
