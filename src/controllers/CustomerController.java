@@ -63,6 +63,18 @@ public class CustomerController extends DBConnect implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		if (!CustomerController.admin) {
+			adminPane.setDisable(true);
+		}
+		userLabel.setText(String.valueOf(CustomerController.user_id));
+		adminLabel.setText(String.valueOf(CustomerController.admin));
+
+		this.setupTable();
+
+	}
+
+	private void setupTable() {
 		minionId.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("minionId"));
 		hostName.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("hostName"));
 		tag.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("tag"));
@@ -71,24 +83,7 @@ public class CustomerController extends DBConnect implements Initializable {
 		CPU.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("CPU"));
 		RAM.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("RAM"));
 		online.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("online"));
-//		select.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("select"));
 
-//		select.prefWidthProperty().bind(tableMinions.widthProperty().divide(9));
-
-		// auto adjust width of columns depending on their content
-		// tableMinions.setColumnResizePolicy((param) -> true );
-		// Platform.runLater(() -> customResize(tableMinions));
-		if (!CustomerController.admin)
-			adminPane.setDisable(true);
-		userLabel.setText(String.valueOf(CustomerController.user_id));
-		adminLabel.setText(String.valueOf(CustomerController.admin));
-
-		this.fixColumSizes();
-		tableMinions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		tableMinions.setVisible(true); // set invisible initially
-	}
-
-	private void fixColumSizes() {
 		minionId.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
 		hostName.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
 		tag.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
@@ -97,6 +92,9 @@ public class CustomerController extends DBConnect implements Initializable {
 		CPU.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
 		RAM.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
 		online.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
+
+		tableMinions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		tableMinions.setVisible(true); // set invisible initially
 	}
 
 	public void customResize(TableView<?> view) {
