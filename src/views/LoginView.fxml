@@ -5,19 +5,22 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-	xmlns="http://javafx.com/javafx/10.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controllers.LoginController">
+<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
 	<children>
-		<Label layoutX="217.0" layoutY="85.0" >Username</Label>
-		<TextField fx:id="txtUsername" layoutX="217.0" layoutY="108.0" />
-		<Label  layoutX="217.0" layoutY="150.0">Password</Label>
-		<PasswordField fx:id="txtPassword" layoutX="217.0" layoutY="173.0" />
-
-		<Button layoutX="217.0" layoutY="234.0" mnemonicParsing="false" onAction="#login" text="Submit" />
 
 		<Label fx:id="lblError" layoutX="60.0" layoutY="315.0" text="" />
+		<Label layoutX="217.0" layoutY="130.0">Username</Label>
+		<TextField fx:id="txtUsername" layoutX="217.0" layoutY="153.0" />
+		<Label layoutX="217.0" layoutY="195.0">Password</Label>
+		<PasswordField fx:id="txtPassword" layoutX="217.0" layoutY="218.0" />
+
+		<Button layoutX="217.0" layoutY="279.0" mnemonicParsing="false" onAction="#login" text="Submit" />
+      <Label layoutX="74.0" layoutY="45.0" text="Super Server Management">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
 	</children>
 </AnchorPane>

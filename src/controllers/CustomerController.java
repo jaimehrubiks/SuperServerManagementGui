@@ -22,20 +22,34 @@ public class CustomerController extends DBConnect implements Initializable {
 
 	static int user_id;
 	
-    @FXML private TableView<CustomerModel> tblAccounts;
-    @FXML private TableColumn<CustomerModel, String> tid;
-    @FXML private TableColumn<CustomerModel, String> balance;
+    @FXML private TableView<CustomerModel> tableMinions;
+    @FXML private TableColumn<CustomerModel, String> minionId;
+    @FXML private TableColumn<CustomerModel, String> hostName;
+    @FXML private TableColumn<CustomerModel, String> tag;
+    @FXML private TableColumn<CustomerModel, String> publicIP;
+    @FXML private TableColumn<CustomerModel, String> IP;
+    @FXML private TableColumn<CustomerModel, String> CPU;
+    @FXML private TableColumn<CustomerModel, String> RAM;
+    @FXML private TableColumn<CustomerModel, String> online;
+    @FXML private TableColumn<CustomerModel, String> select;
  
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tid.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("tid"));
-        balance.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("balance")); 
+        minionId.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("minionId"));
+        hostName.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("hostName")); 
+        tag.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("tag")); 
+        publicIP.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("publicIP")); 
+        IP.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("IP")); 
+        CPU.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("CPU")); 
+        RAM.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("RAM")); 
+        online.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("online")); 
+        select.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("select")); 
         
         //auto adjust width of columns depending on their content
-        tblAccounts.setColumnResizePolicy((param) -> true );
-        Platform.runLater(() -> customResize(tblAccounts));
+        tableMinions.setColumnResizePolicy((param) -> true );
+        Platform.runLater(() -> customResize(tableMinions));
         
-    	tblAccounts.setVisible(true); //set invisible initially
+    	tableMinions.setVisible(true); //set invisible initially
     }
     
     public void customResize(TableView<?> view) {
@@ -70,8 +84,8 @@ public class CustomerController extends DBConnect implements Initializable {
 	public void viewAccounts( ) throws IOException {
 		
 		CustomerModel cm = new CustomerModel();
-    	tblAccounts.getItems().setAll(cm.getAccounts(CustomerController.user_id )); //load table data from CustomerModel list
-		tblAccounts.setVisible(true); //set tableview to visible
+    	tableMinions.getItems().setAll(cm.getAccounts(CustomerController.user_id )); //load table data from CustomerModel list
+		tableMinions.setVisible(true); //set tableview to visible
 		System.out.println(cm.getCustomerInfo());
 		 
 	}

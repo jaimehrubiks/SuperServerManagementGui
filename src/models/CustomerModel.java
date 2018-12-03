@@ -10,13 +10,16 @@ import Dao.DBConnect;
 
 public class CustomerModel extends DBConnect implements User<Bank>{
 
-	private String firstName;
-	private String lastName;
-	private int id;
-	private int cid;
-	private int tid;
-	private double balance;
-	 
+	private int minionId;
+	private String CPU;
+	private String IP;
+	private String RAM;
+	private String publicIP;
+	private String hostName;
+	private String tag;
+	private boolean online;	
+	private boolean select;
+	
 	Bank custBank;
 	
 	public CustomerModel() {
@@ -30,71 +33,27 @@ public class CustomerModel extends DBConnect implements User<Bank>{
  
 	public CustomerModel(int tid, double balance) {
 		 
-		this.tid = tid;
-		this.balance = balance;
+//		this.tid = tid;
+//		this.balance = balance;
  
 	}
-	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
- 	public void setCid(int cid) {
-		this.cid = cid;
-	}
-
-	public void setTid(int tid) {
-		this.tid = tid;
-	}
-	
-	public int getTid() {
-		return tid;
-	}
-	 
-	public Double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Double balance) {
-		this.balance = balance;
-	}
-  
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
 	public List<CustomerModel> getAccounts(int cid) {
 		List<CustomerModel> accounts  = new ArrayList<>();
-		String query = "SELECT tid,balance FROM accounts WHERE cid = ?;";
-		try(PreparedStatement statement = connection.prepareStatement(query)){
-            statement.setInt(1, cid);
-            ResultSet resultSet = statement.executeQuery();
-            while(resultSet.next()) {
-            	CustomerModel account = new CustomerModel();
-                //grab record data by table field name into CustomerModel account object
-            	account.setTid(resultSet.getInt("tid"));
-            	account.setBalance(resultSet.getDouble("balance"));
-            	accounts.add(account); //add account data to arraylist
-            }
-        } catch(SQLException e){
-            System.out.println("Error fetching Accounts: " + e);
-        }
+//		String query = "SELECT tid,balance FROM accounts WHERE cid = ?;";
+//		try(PreparedStatement statement = connection.prepareStatement(query)){
+//            statement.setInt(1, cid);
+//            ResultSet resultSet = statement.executeQuery();
+//            while(resultSet.next()) {
+//            	CustomerModel account = new CustomerModel();
+//                //grab record data by table field name into CustomerModel account object
+//            	account.setTid(resultSet.getInt("tid"));
+//            	account.setBalance(resultSet.getDouble("balance"));
+//            	accounts.add(account); //add account data to arraylist
+//            }
+//        } catch(SQLException e){
+//            System.out.println("Error fetching Accounts: " + e);
+//        }
 		return accounts; //return arraylist
 	}
 

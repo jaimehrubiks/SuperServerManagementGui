@@ -50,10 +50,17 @@
 	<children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
-      		<TableView fx:id="tblAccounts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+      		<TableView fx:id="tableMinions" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
       			<columns>
-      				<TableColumn fx:id="tid" prefWidth="50.0" text="tid" />
-      				<TableColumn fx:id="balance" prefWidth="50.0" text="balance" />
+      				<TableColumn fx:id="minionId" prefWidth="50.0" text="Minion ID" />
+      				<TableColumn fx:id="hostName" prefWidth="50.0" text="Hostname" />
+      				<TableColumn fx:id="tag" prefWidth="50.0" text="Tag" />
+      				<TableColumn fx:id="publicIP" prefWidth="50.0" text="Public IP" />
+      				<TableColumn fx:id="IP" prefWidth="50.0" text="Private IP" />
+      				<TableColumn fx:id="CPU" prefWidth="50.0" text="CPU" />
+      				<TableColumn fx:id="RAM" prefWidth="50.0" text="RAM" />
+      				<TableColumn fx:id="online" prefWidth="50.0" text="Online" />
+      				<TableColumn fx:id="select" prefWidth="50.0" text="Select" />
       			</columns>
       		</TableView>
             <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="200.0" prefWidth="200.0" spacing="3.0">
