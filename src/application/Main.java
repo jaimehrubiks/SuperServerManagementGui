@@ -16,9 +16,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			stage = primaryStage;
-			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/LoginView.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/CustomerView.fxml"));
+//			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/LoginView.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+//			scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 			stage.setTitle("Super Server Management: Login");
 			stage.setScene(scene);
 			stage.show();

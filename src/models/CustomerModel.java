@@ -62,15 +62,16 @@ public class CustomerModel extends DBConnect implements User<Bank> {
 			Message ans = socket.receiveMessage();
 			if (ans.getMsgType() == MessageType.USER_QUERY_BASICINFO) {
 				query = (UserQueryMinionBasicInfo) ans;
+				System.out.println(query.toString());
 				minion = new CustomerModel();
 				minion.setMinionId(query.getMinionId());
 				minion.setCPU(query.getCPU());
-				minion.setHostName(query.get_Hostname());
+				minion.setHostName(query.getHostname());
 				minion.setIP(query.getIP());
 				minion.setPublicIP(query.getPublicIP());
 				minion.setRAM(query.getRAM());
 				minion.setOnline(query.isOnline());
-				minion.setSelect(false);
+				//minion.setSelect(false);
 			} else {
 				System.out.println("Error receiving message.");
 			}
