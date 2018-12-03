@@ -33,7 +33,7 @@ public class LoginModel extends DBConnect {
 				login = (UserLogin) m;
 				if(login.isOk()){
 					setAdmin(login.isAdmin());
-					setUserId(m.getUserId());
+					setUserId(login.getUserId());
 					return true;
 				}
 			}

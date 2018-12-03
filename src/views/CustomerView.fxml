@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
@@ -85,6 +86,47 @@
             </GridPane>
             <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="200.0" prefWidth="200.0" spacing="3.0">
                <children>
+                  <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Info">
+                     <content>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <VBox maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.0" minWidth="10.0" prefWidth="64.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="User ID:">
+                                             <font>
+                                                <Font name="Arial Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Admin Mode:" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Arial Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="userLabel" GridPane.columnIndex="1" />
+                                          <Label fx:id="adminLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logOut" text="Logout" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </TitledPane>
                   <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Minion List Info">
                     <content>
                       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -119,7 +161,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Admin Tasks">
+                  <TitledPane fx:id="adminPane" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Admin Tasks">
                      <content>
                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <children>

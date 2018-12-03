@@ -16,11 +16,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import models.CustomerModel;
 
 public class CustomerController extends DBConnect implements Initializable {
@@ -29,6 +32,13 @@ public class CustomerController extends DBConnect implements Initializable {
 	static boolean admin;
 	private CustomerModel cm;
 	private Map<Integer, CustomerModel> minions;
+
+	@FXML
+	private Label userLabel;
+	@FXML
+	private Label adminLabel;
+	@FXML
+	private TitledPane adminPane;
 
 	@FXML
 	private TableView<CustomerModel> tableMinions;
@@ -68,6 +78,10 @@ public class CustomerController extends DBConnect implements Initializable {
 		// auto adjust width of columns depending on their content
 		// tableMinions.setColumnResizePolicy((param) -> true );
 		// Platform.runLater(() -> customResize(tableMinions));
+		if (!CustomerController.admin)
+			adminPane.setDisable(true);
+		userLabel.setText(String.valueOf(CustomerController.user_id));
+		adminLabel.setText(String.valueOf(CustomerController.admin));
 
 		this.fixColumSizes();
 		tableMinions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -97,6 +111,21 @@ public class CustomerController extends DBConnect implements Initializable {
 			view.getColumns().forEach(col -> {
 				col.setPrefWidth(col.getWidth() + ((tableWidth - width.get()) / view.getColumns().size()));
 			});
+		}
+	}
+
+	public void logOut() {
+		System.out.println("Trying to log out");
+		AnchorPane root;
+		try {
+			root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/LoginView.fxml"));
+			Main.stage.setTitle("Super Server Management: Login");
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/styles.css").toExternalForm());
+			Main.stage.setScene(scene);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -159,8 +188,8 @@ public class CustomerController extends DBConnect implements Initializable {
 		minions = cm.queryMinionList();
 		minions.values().forEach((minionn) -> {
 			int minionId = minionn.getMinionId();
-			//if (minions.containsKey(minionId)) {
-				new Thread(() -> queryMinionBasicInfoById(minionId)).start();
+			// if (minions.containsKey(minionId)) {
+			new Thread(() -> queryMinionBasicInfoById(minionId)).start();
 //				CustomerModel minion = cm.queryMinionBasicInfo(minionId);
 //				if (minion != null) {
 //					minions.put(minionId, minion);

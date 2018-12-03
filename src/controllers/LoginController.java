@@ -31,7 +31,6 @@ public class LoginController {
 	public void login() {
 		String username = this.txtUsername.getText();
 		String password = this.txtPassword.getText();
-		
 
 		// Validations
 		if (username == null || username.trim().equals("")) {
@@ -43,8 +42,7 @@ public class LoginController {
 			lblError.setText("Password Cannot be empty or spaces");
 			return;
 		}
-		if (username == null || username.trim().equals("") && 
-		   (password == null || password.trim().equals(""))) {
+		if (username == null || username.trim().equals("") && (password == null || password.trim().equals(""))) {
 			lblError.setText("User name / Password Cannot be empty or spaces");
 			return;
 		}
@@ -61,20 +59,11 @@ public class LoginController {
 		}
 		try {
 			AnchorPane root;
-			if (model.isAdmin() && isValid) {
-				// If user is admin, inflate admin view
-
-				root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/AdminView.fxml"));
-				Main.stage.setTitle("Admin View");
-  
-			} else {
-				// If user is customer, inflate customer view
-				root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/CustomerView.fxml"));
-				int user_id = model.getUserId();
- 				CustomerController.setUser(user_id);
- 				CustomerController.setAdmin(model.isAdmin());
-				Main.stage.setTitle("Super Server Management: Minion View");
-			}
+			// If user is customer, inflate customer view
+			CustomerController.setUser(model.getUserId());
+			CustomerController.setAdmin(model.isAdmin());
+			root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/CustomerView.fxml"));
+			Main.stage.setTitle("Super Server Management: Minion View");
 
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
