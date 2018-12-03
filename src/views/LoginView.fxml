@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
 	<children>
 
-		<Label fx:id="lblError" layoutX="60.0" layoutY="315.0" text="" />
+		<Label fx:id="lblError" alignment="CENTER" layoutX="60.0" layoutY="340.0" maxWidth="1.7976931348623157E308" text="" textAlignment="CENTER" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" />
 		<Label layoutX="217.0" layoutY="130.0">Username</Label>
 		<TextField fx:id="txtUsername" layoutX="217.0" layoutY="153.0" />
 		<Label layoutX="217.0" layoutY="195.0">Password</Label>

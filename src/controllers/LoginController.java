@@ -56,7 +56,7 @@ public class LoginController {
 	public void checkCredentials(String username, String password) {
 		Boolean isValid = model.authenticate(username, password);
 		if (!isValid) {
-			lblError.setText("User does not exist!");
+			lblError.setText("Wrong username or password!!.");
 			return;
 		}
 		try {
@@ -69,12 +69,11 @@ public class LoginController {
   
 			} else {
 				// If user is customer, inflate customer view
-				
 				root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/CustomerView.fxml"));
-				// ***Set user ID acquired from db****
-				int user_id = 1;  //hard coded for testing purposes only!!
+				int user_id = model.getUserId();
  				CustomerController.setUser(user_id);
-				Main.stage.setTitle("Customer View");
+ 				CustomerController.setAdmin(model.isAdmin());
+				Main.stage.setTitle("Super Server Management: Minion View");
 			}
 
 			Scene scene = new Scene(root);

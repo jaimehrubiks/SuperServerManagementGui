@@ -26,6 +26,7 @@ import models.CustomerModel;
 public class CustomerController extends DBConnect implements Initializable {
 
 	static int user_id;
+	static boolean admin;
 	private CustomerModel cm;
 	private Map<Integer, CustomerModel> minions;
 
@@ -179,5 +180,19 @@ public class CustomerController extends DBConnect implements Initializable {
 		} catch (Exception e) {
 			System.out.println("Error occured while inflating view: " + e);
 		}
+	}
+
+	/**
+	 * @return the admin
+	 */
+	public static boolean isAdmin() {
+		return admin;
+	}
+
+	/**
+	 * @param admin the admin to set
+	 */
+	public static void setAdmin(boolean admin) {
+		CustomerController.admin = admin;
 	}
 }

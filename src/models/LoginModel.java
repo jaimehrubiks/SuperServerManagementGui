@@ -1,6 +1,10 @@
 package models;
 
 import Dao.DBConnect;
+import configuration.Settings;
+import messages.Message;
+import messages.MessageType;
+import messages.UserLogin;
 import network.TCPUserClient;
 
 public class LoginModel extends DBConnect {
@@ -21,26 +25,20 @@ public class LoginModel extends DBConnect {
 	
 	public Boolean authenticate(String username, String password) {
 		try {
-			/*
 			TCPUserClient socket = new TCPUserClient(Settings.hostname, Settings.port);
 			UserLogin login = new UserLogin(username, password);
 			socket.sendMessage(login);
-			Messsage m = socket.receiveMessage();
-			if(m.msgType == MessageType.USER_LOGIN){
+			Message m = socket.receiveMessage();
+			if(m.getMsgType() == MessageType.USER_LOGIN){
 				login = (UserLogin) m;
-				if(m.isCorrect(){
-					setAdmin(m.isAdmin());
+				if(login.isOk()){
+					setAdmin(login.isAdmin());
 					setUserId(m.getUserId());
 					return true;
 				}
 			}
-			*/
-			setAdmin(false);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-		// return false;
+		} catch (Exception e) { }
+		 return false;
 	}
 
 	/**

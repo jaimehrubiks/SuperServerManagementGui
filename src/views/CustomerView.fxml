@@ -54,7 +54,7 @@
 	<children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
-            <GridPane alignment="TOP_CENTER" gridLinesVisible="true" HBox.hgrow="ALWAYS">
+            <GridPane alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
