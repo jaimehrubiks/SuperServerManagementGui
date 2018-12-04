@@ -11,6 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import Dao.DBConnect;
 import configuration.Settings;
 import errors.ConnectionException;
+import messages.CmdQuery;
+import messages.CmdType;
 import messages.Message;
 import messages.MessageType;
 import messages.UserQueryMinionBasicInfo;
@@ -71,7 +73,7 @@ public class CustomerModel extends DBConnect implements User<Bank> {
 				minion.setPublicIP(query.getPublicIP());
 				minion.setRAM(query.getRAM());
 				minion.setOnline(query.isOnline());
-				//minion.setSelect(false);
+				// minion.setSelect(false);
 			} else {
 				System.out.println("Error receiving message.");
 			}
@@ -82,7 +84,7 @@ public class CustomerModel extends DBConnect implements User<Bank> {
 				socket.closeConnection();
 		}
 
-		return minion; 
+		return minion;
 	}
 
 	public Map<Integer, CustomerModel> queryMinionList() {
@@ -116,6 +118,34 @@ public class CustomerModel extends DBConnect implements User<Bank> {
 		}
 
 		return minions; // return arraylist
+	}
+
+	public String getProcessList(int id) {
+
+		TCPUserClient socket = null;
+		try {
+			socket = new TCPUserClient(Settings.hostname, Settings.port);
+
+			System.out.println("Testing command: ProcessList");
+			CmdQuery query = new CmdQuery(CmdType.MINION_PROCESS_LIST, MessageType.MINION_PROCESS_LIST, id);
+			socket.sendMessage(query);
+			System.out.println("Message send. Wainting for response");
+			Message message2 = socket.receiveMessage();
+			if (message2.getMsgType() == MessageType.MINION_PROCESS_LIST) {
+				System.out.println("Correct Answer received: ");
+				query = (CmdQuery) message2;
+				return query.toString();
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		} finally {
+			if (socket != null)
+				socket.closeConnection();
+		}
+
+		return " ";
+
+
 	}
 
 	@Override

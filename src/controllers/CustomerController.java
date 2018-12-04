@@ -25,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import models.CustomerModel;
+import models.InfoSpawn;
 
 public class CustomerController extends DBConnect implements Initializable {
 
@@ -196,7 +197,23 @@ public class CustomerController extends DBConnect implements Initializable {
 		});
 //		tableMinions.getItems().setAll(minions.values());
 	}
-
+	
+	public void queryProcessList() {
+		System.out.println("Querying process List");
+		ObservableList<CustomerModel> selected = tableMinions.getSelectionModel().getSelectedItems();
+		selected.forEach( minion -> {
+			queryProcessListById(minion.getMinionId());
+		});
+	}
+	
+	public void queryProcessListById(int minionId) {
+		String result = cm.getProcessList(minionId);
+		InfoSpawn is = new InfoSpawn();
+		System.out.println(minionId);
+		System.out.println(result);
+		is.spawnInfoView(minionId, "Process List", result);
+	}
+	
 	public void logout() {
 		System.exit(0);
 		try {
