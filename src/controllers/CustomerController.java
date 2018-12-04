@@ -27,7 +27,7 @@ import javafx.scene.layout.GridPane;
 import models.CustomerModel;
 import models.InfoSpawn;
 
-public class CustomerController extends DBConnect implements Initializable {
+public class CustomerController  implements Initializable {
 
 	static int user_id;
 	static boolean admin;
@@ -202,7 +202,9 @@ public class CustomerController extends DBConnect implements Initializable {
 		System.out.println("Querying process List");
 		ObservableList<CustomerModel> selected = tableMinions.getSelectionModel().getSelectedItems();
 		selected.forEach( minion -> {
-			queryProcessListById(minion.getMinionId());
+			if(minion.isOnline()) {
+				queryProcessListById(minion.getMinionId());
+			}
 		});
 	}
 	
