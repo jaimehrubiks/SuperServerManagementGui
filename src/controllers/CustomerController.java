@@ -242,6 +242,15 @@ public class CustomerController implements Initializable {
 
 	}
 
+	public void viewUserLogs() {
+		if (CustomerController.isAdmin()) {
+//			new Thread(() -> {
+			UserLogController launcher = new UserLogController();
+			launcher.launchUserLogWindow();
+//			}).start();
+		}
+
+	}
 	/**
 	 * @return the admin
 	 */
