@@ -27,7 +27,7 @@ import javafx.scene.layout.GridPane;
 import models.CustomerModel;
 import models.InfoSpawn;
 
-public class CustomerController  implements Initializable {
+public class CustomerController implements Initializable {
 
 	static int user_id;
 	static boolean admin;
@@ -64,7 +64,7 @@ public class CustomerController  implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		if (!CustomerController.admin) {
 			adminPane.setDisable(true);
 		}
@@ -197,17 +197,17 @@ public class CustomerController  implements Initializable {
 		});
 //		tableMinions.getItems().setAll(minions.values());
 	}
-	
+
 	public void queryProcessList() {
 		System.out.println("Querying process List");
 		ObservableList<CustomerModel> selected = tableMinions.getSelectionModel().getSelectedItems();
-		selected.forEach( minion -> {
-			if(minion.isOnline()) {
+		selected.forEach(minion -> {
+			if (minion.isOnline()) {
 				queryProcessListById(minion.getMinionId());
 			}
 		});
 	}
-	
+
 	public void queryProcessListById(int minionId) {
 		String result = cm.getProcessList(minionId);
 		InfoSpawn is = new InfoSpawn();
@@ -215,7 +215,7 @@ public class CustomerController  implements Initializable {
 		System.out.println(result);
 		is.spawnInfoView(minionId, "Process List", result);
 	}
-	
+
 	public void logout() {
 		System.exit(0);
 		try {
@@ -226,6 +226,16 @@ public class CustomerController  implements Initializable {
 		} catch (Exception e) {
 			System.out.println("Error occured while inflating view: " + e);
 		}
+	}
+
+	public void viewMinionLogs() {
+		if (CustomerController.isAdmin()) {
+//			new Thread(() -> {
+				MinionLogController launcher = new MinionLogController();
+				launcher.launchMinionLogWindow();
+//			}).start();
+		}
+
 	}
 
 	/**
