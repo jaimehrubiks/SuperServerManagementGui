@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<!-- <GridPane alignment="center" gridLinesVisible="true" hgap="1.0" maxHeight="400.0" maxWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerController"> -->
+<!-- 	<TableView fx:id="tblAccounts" GridPane.columnIndex="1" GridPane.rowIndex="1"> -->
+<!-- 		<columns> -->
+<!-- 			<TableColumn fx:id="tid" prefWidth="50.0" text="tid" /> -->
+<!-- 			<TableColumn fx:id="balance" prefWidth="50.0" text="balance" /> -->
+<!-- 		</columns> -->
+<!-- 	</TableView> -->
+<!--    <VBox prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1"> -->
+<!--       <children> -->
+<!--       	<padding> -->
+<!--       		<Insets top="25" right="25" bottom="10" left="25" /> -->
+<!--       	</padding> -->
+<!--       	<Button mnemonicParsing="false" onAction="#viewAccounts" text="View Accounts" /> -->
+<!--       	<Button mnemonicParsing="false" prefHeight="27.0" text="Create Transactions" /> -->
+<!--       	<Button mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="134.0" text="Logout" /> -->
+<!--       </children> -->
+<!--    </VBox> -->
+<!--    <columnConstraints> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--       <ColumnConstraints /> -->
+<!--    </columnConstraints> -->
+<!--    <rowConstraints> -->
+<!--       <RowConstraints /> -->
+<!--       <RowConstraints /> -->
+<!--    </rowConstraints> -->
+<!-- </GridPane> -->
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MinionLogController">
+	<children>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <children>
+            <GridPane alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+            		<TableView fx:id="tableMinionLog" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.56" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            			<columns>
+            				<TableColumn fx:id="id" prefWidth="50.0" text="ID" />
+            				<TableColumn fx:id="minionId" minWidth="50.0" text="minionID" />
+            				<TableColumn fx:id="messageType" minWidth="70.0" text="Message Type" />
+            				<TableColumn fx:id="date" minWidth="50.0" text="Date" />
+            				<TableColumn fx:id="message" minWidth="300.0" text="Message Value" />
+<!--             				<TableColumn fx:id="select" minWidth="50.0" text="Select" /> -->
+            			</columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+            		</TableView>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+	</children>
+   <padding>
+      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+   </padding>
+</AnchorPane>

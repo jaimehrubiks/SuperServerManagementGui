@@ -24,6 +24,7 @@ public class LoginModel extends DBConnect {
 	}
 	
 	public Boolean authenticate(String username, String password) {
+		System.out.println("Trying to authenticate.");
 		try {
 			TCPUserClient socket = new TCPUserClient(Settings.hostname, Settings.port);
 			UserLogin login = new UserLogin(username, password);
@@ -31,13 +32,14 @@ public class LoginModel extends DBConnect {
 			Message m = socket.receiveMessage();
 			if(m.getMsgType() == MessageType.USER_LOGIN){
 				login = (UserLogin) m;
+				System.out.println(login);
 				if(login.isOk()){
 					setAdmin(login.isAdmin());
 					setUserId(login.getUserId());
 					return true;
 				}
 			}
-		} catch (Exception e) { }
+		} catch (Exception e) { System.out.println(e); }
 		 return false;
 	}
 
