@@ -130,10 +130,21 @@ public class CustomerController implements Initializable {
 		CustomerController.user_id = user_id;
 	}
 
+	public void updateTableAsync() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				tableMinions.getItems().setAll(minions.values());
+			}
+		});
+	}
+
 	public void queryMinions() {
-		minions = cm.queryMinionList();
-		System.out.println("Got minions");
-		tableMinions.getItems().setAll(minions.values());
+		new Thread(() -> {
+			minions = cm.queryMinionList();
+			System.out.println("Got minions");
+			updateTableAsync();
+		}).start();
 	}
 
 	public void queryMinionBasicInfo() {
@@ -144,12 +155,9 @@ public class CustomerController implements Initializable {
 			System.out.println("looping");
 			CustomerModel row = selected.get(i);
 			int minionId = row.getMinionId();
-			Platform.runLater(new Runnable() {
-				@Override
-				public void run() {
-					queryMinionBasicInfoById(minionId);
-				}
-			});
+			new Thread(() -> {
+				queryMinionBasicInfoById(minionId);
+			}).start();
 		}
 
 	}
@@ -159,18 +167,21 @@ public class CustomerController implements Initializable {
 			CustomerModel minion = cm.queryMinionBasicInfo(minionId);
 			if (minion != null) {
 				minions.put(minionId, minion);
-				tableMinions.getItems().setAll(minions.values());
+				updateTableAsync();
 			}
 		}
 	}
 
 	public void queryMinionsAndBasicInfo() {
-		minions = cm.queryMinionList();
-		tableMinions.getItems().setAll(minions.values());
-		minions.values().forEach((minionn) -> {
-			int minionId = minionn.getMinionId();
-			new Thread(() -> queryMinionBasicInfoById(minionId)).start();
-		});
+		new Thread(() -> {
+			minions = cm.queryMinionList();
+			System.out.println("Got minions");
+			updateTableAsync();
+			minions.values().forEach((minionn) -> {
+				int minionId = minionn.getMinionId();
+				new Thread(() -> queryMinionBasicInfoById(minionId)).start();
+			});
+		}).start();
 	}
 
 	public void queryProcessList() {
