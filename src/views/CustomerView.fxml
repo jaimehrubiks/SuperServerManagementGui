@@ -134,7 +134,7 @@
                               <VBox maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                               		<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinions" text="List Minions" VBox.vgrow="ALWAYS" />
-                              		<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinionsAndBasicInfo" text="List Minions &amp; Basic Info" />
+                              		<Button fx:id="buttondoublequery" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinionsAndBasicInfo" text="List Minions &amp; Basic Info" />
                                  </children>
                               </VBox>
                            </children>

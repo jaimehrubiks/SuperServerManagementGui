@@ -64,8 +64,8 @@ public class LoginController {
 			CustomerController.setAdmin(model.isAdmin());
 			root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/CustomerView.fxml"));
 			Main.stage.setTitle("Super Server Management: Minion View");
-
 			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("table.css").toExternalForm());
 			Main.stage.setScene(scene);
 
 		} catch (Exception e) {
