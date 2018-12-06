@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserLogController">
+	<children>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <children>
+            <GridPane alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+            		<TableView fx:id="tableUserLog" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.56" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            			<columns>
+            				<TableColumn fx:id="id" prefWidth="50.0" text="ID" />
+            				<TableColumn fx:id="userId" minWidth="50.0" text="userId" />
+            				<TableColumn fx:id="messageType" minWidth="70.0" text="Message Type" />
+            				<TableColumn fx:id="date" minWidth="50.0" text="Date" />
+            				<TableColumn fx:id="message" minWidth="300.0" text="Message Value" />
+<!--             				<TableColumn fx:id="select" minWidth="50.0" text="Select" /> -->
+            			</columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+            		</TableView>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+	</children>
+   <padding>
+      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+   </padding>
+</AnchorPane>

@@ -168,7 +168,7 @@
                               <VBox maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewMinionLogs" text="View Minion Logs" VBox.vgrow="ALWAYS" />
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="View User Logs" />
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewUserLogs" text="View User Logs" />
                                  </children>
                               </VBox>
                            </children>
