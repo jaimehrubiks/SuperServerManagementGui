@@ -155,6 +155,7 @@ public class CustomerController implements Initializable {
 
 	public void queryMinions() {
 		minions = cm.queryMinionList();
+		System.out.println("Got minions");
 		tableMinions.getItems().setAll(minions.values());
 	}
 
@@ -166,11 +167,14 @@ public class CustomerController implements Initializable {
 			System.out.println("looping");
 			CustomerModel row = selected.get(i);
 			int minionId = row.getMinionId();
-			new Thread(() -> queryMinionBasicInfoById(minionId)).start();
-//			queryMinionBasicInfoById(minionId);
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					queryMinionBasicInfoById(minionId);
+				}
+			});
 		}
 
-		tableMinions.getItems().setAll(minions.values());
 	}
 
 	public void queryMinionBasicInfoById(int minionId) {
@@ -185,17 +189,17 @@ public class CustomerController implements Initializable {
 
 	public void queryMinionsAndBasicInfo() {
 		minions = cm.queryMinionList();
+		tableMinions.getItems().setAll(minions.values());
 		minions.values().forEach((minionn) -> {
 			int minionId = minionn.getMinionId();
-			// if (minions.containsKey(minionId)) {
 			new Thread(() -> queryMinionBasicInfoById(minionId)).start();
-//				CustomerModel minion = cm.queryMinionBasicInfo(minionId);
-//				if (minion != null) {
-//					minions.put(minionId, minion);
+//			Platform.runLater(new Runnable() {
+//				@Override
+//				public void run() {
+//					queryMinionBasicInfoById(minionId);
 //				}
-//			}
+//			});
 		});
-//		tableMinions.getItems().setAll(minions.values());
 	}
 
 	public void queryProcessList() {
@@ -231,8 +235,8 @@ public class CustomerController implements Initializable {
 	public void viewMinionLogs() {
 		if (CustomerController.isAdmin()) {
 //			new Thread(() -> {
-				MinionLogController launcher = new MinionLogController();
-				launcher.launchMinionLogWindow();
+			MinionLogController launcher = new MinionLogController();
+			launcher.launchMinionLogWindow();
 //			}).start();
 		}
 

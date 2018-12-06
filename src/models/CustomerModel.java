@@ -1,16 +1,9 @@
 package models;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import Dao.DBConnect;
 import configuration.Settings;
-import errors.ConnectionException;
 import messages.CmdQuery;
 import messages.CmdType;
 import messages.Message;
@@ -19,7 +12,7 @@ import messages.UserQueryMinionBasicInfo;
 import messages.UserQueryMinionList;
 import network.TCPUserClient;
 
-public class CustomerModel extends DBConnect implements User<Bank> {
+public class CustomerModel  {
 
 	private int minionId;
 	private String CPU;
@@ -102,11 +95,13 @@ public class CustomerModel extends DBConnect implements User<Bank> {
 			Message ans = socket.receiveMessage();
 			if (ans.getMsgType() == MessageType.USER_QUERY_MINIONLIST) {
 				query = (UserQueryMinionList) ans;
+				System.out.println("Got response.");
 				for (int i : query.getMinionList()) {
 					CustomerModel minion = new CustomerModel();
 					minion.setMinionId(i);
 					minions.put(minion.getMinionId(), minion);
 				}
+				System.out.println("Prepared list");
 			} else {
 				System.out.println("Error receiving message.");
 			}
@@ -146,12 +141,6 @@ public class CustomerModel extends DBConnect implements User<Bank> {
 		return " ";
 
 
-	}
-
-	@Override
-	public Bank getCustomerInfo() {
-		// TODO Auto-generated method stub
-		return custBank;
 	}
 
 	/**
