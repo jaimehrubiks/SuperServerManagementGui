@@ -24,21 +24,7 @@ public class CustomerModel  {
 	private boolean online;
 	private boolean select;
 
-	Bank custBank;
-
 	public CustomerModel() {
-
-		custBank = new Bank();
-		custBank.setBankId(100);
-		custBank.setBankName("Bank of IIT");
-		custBank.setBankAddress("10 W 35th St, Chicago, IL 60616");
-
-	}
-
-	public CustomerModel(int tid, double balance) {
-
-//		this.tid = tid;
-//		this.balance = balance;
 
 	}
 
@@ -269,17 +255,4 @@ public class CustomerModel  {
 		this.select = select;
 	}
 
-	/**
-	 * @return the custBank
-	 */
-	public Bank getCustBank() {
-		return custBank;
-	}
-
-	/**
-	 * @param custBank the custBank to set
-	 */
-	public void setCustBank(Bank custBank) {
-		this.custBank = custBank;
-	}
 }

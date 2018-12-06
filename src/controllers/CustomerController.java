@@ -2,13 +2,10 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import Dao.DBConnect;
 import application.Main;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -23,7 +20,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import models.CustomerModel;
 import models.InfoSpawn;
 
@@ -59,8 +55,6 @@ public class CustomerController implements Initializable {
 	private TableColumn<CustomerModel, String> RAM;
 	@FXML
 	private TableColumn<CustomerModel, String> online;
-//	@FXML
-//	private TableColumn<CustomerModel, String> select;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -130,27 +124,10 @@ public class CustomerController implements Initializable {
 
 	public CustomerController() {
 		cm = new CustomerModel();
-
-		/*
-		 * Alert alert = new Alert(AlertType.INFORMATION);
-		 * alert.setTitle("From Customer controller");
-		 * alert.setHeaderText("Bank Of IIT- Chicago Main Branch");
-		 * alert.setContentText("Welcome back!"); alert.showAndWait();
-		 */
-
 	}
 
 	public static void setUser(int user_id) {
 		CustomerController.user_id = user_id;
-	}
-
-	public void viewAccounts() throws IOException {
-
-//		CustomerModel cm = new CustomerModel();
-//    	tableMinions.getItems().setAll(cm.getAccounts(CustomerController.user_id )); //load table data from CustomerModel list
-//		tableMinions.setVisible(true); //set tableview to visible
-//		System.out.println(cm.getCustomerInfo());
-
 	}
 
 	public void queryMinions() {
@@ -193,12 +170,6 @@ public class CustomerController implements Initializable {
 		minions.values().forEach((minionn) -> {
 			int minionId = minionn.getMinionId();
 			new Thread(() -> queryMinionBasicInfoById(minionId)).start();
-//			Platform.runLater(new Runnable() {
-//				@Override
-//				public void run() {
-//					queryMinionBasicInfoById(minionId);
-//				}
-//			});
 		});
 	}
 
@@ -234,23 +205,20 @@ public class CustomerController implements Initializable {
 
 	public void viewMinionLogs() {
 		if (CustomerController.isAdmin()) {
-//			new Thread(() -> {
 			MinionLogController launcher = new MinionLogController();
 			launcher.launchMinionLogWindow();
-//			}).start();
 		}
 
 	}
 
 	public void viewUserLogs() {
 		if (CustomerController.isAdmin()) {
-//			new Thread(() -> {
 			UserLogController launcher = new UserLogController();
 			launcher.launchUserLogWindow();
-//			}).start();
 		}
 
 	}
+
 	/**
 	 * @return the admin
 	 */

@@ -1,16 +1,14 @@
 package models;
 
-import Dao.DBConnect;
 import configuration.Settings;
 import messages.Message;
 import messages.MessageType;
 import messages.UserLogin;
 import network.TCPUserClient;
 
-public class LoginModel extends DBConnect {
+public class LoginModel {
  
 	private Boolean admin;
-	private TCPUserClient socket;
 	private int userId;
 	
 	public LoginModel() {

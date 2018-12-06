@@ -34,7 +34,6 @@ public class InfoController implements Initializable{
 	public void configure() {
 		this.infoText.appendText(this.text);
 		this.infoText.setEditable(false);
-//		this.infoText.wrapTextProperty();
 
 		this.minionIdLabel.setText(String.valueOf(minionId));
 		System.out.println("we have type: " + type);
