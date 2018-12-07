@@ -15,42 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<!-- <GridPane alignment="center" gridLinesVisible="true" hgap="1.0" maxHeight="400.0" maxWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerController"> -->
-<!-- 	<TableView fx:id="tblAccounts" GridPane.columnIndex="1" GridPane.rowIndex="1"> -->
-<!-- 		<columns> -->
-<!-- 			<TableColumn fx:id="tid" prefWidth="50.0" text="tid" /> -->
-<!-- 			<TableColumn fx:id="balance" prefWidth="50.0" text="balance" /> -->
-<!-- 		</columns> -->
-<!-- 	</TableView> -->
-<!--    <VBox prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1"> -->
-<!--       <children> -->
-<!--       	<padding> -->
-<!--       		<Insets top="25" right="25" bottom="10" left="25" /> -->
-<!--       	</padding> -->
-<!--       	<Button mnemonicParsing="false" onAction="#viewAccounts" text="View Accounts" /> -->
-<!--       	<Button mnemonicParsing="false" prefHeight="27.0" text="Create Transactions" /> -->
-<!--       	<Button mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="134.0" text="Logout" /> -->
-<!--       </children> -->
-<!--    </VBox> -->
-<!--    <columnConstraints> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--       <ColumnConstraints /> -->
-<!--    </columnConstraints> -->
-<!--    <rowConstraints> -->
-<!--       <RowConstraints /> -->
-<!--       <RowConstraints /> -->
-<!--    </rowConstraints> -->
-<!-- </GridPane> -->
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerController">
 	<children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
@@ -134,7 +98,7 @@
                               <VBox maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                               		<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinions" text="List Minions" VBox.vgrow="ALWAYS" />
-                              		<Button fx:id="buttondoublequery" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinionsAndBasicInfo" text="List Minions &amp; Basic Info" />
+                              		<Button fx:id="buttondoublequery" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#queryMinionsAndBasicInfo" text="Update Minions Table" />
                                  </children>
                               </VBox>
                            </children>
