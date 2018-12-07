@@ -15,10 +15,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import models.CustomerModel;
 import models.InfoSpawn;
@@ -54,7 +57,7 @@ public class CustomerController implements Initializable {
 	@FXML
 	private TableColumn<CustomerModel, String> RAM;
 	@FXML
-	private TableColumn<CustomerModel, String> online;
+	private TableColumn<CustomerModel, Boolean> online;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -70,6 +73,7 @@ public class CustomerController implements Initializable {
 	}
 
 	private void setupTable() {
+
 		minionId.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("minionId"));
 		hostName.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("hostName"));
 		tag.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("tag"));
@@ -77,7 +81,31 @@ public class CustomerController implements Initializable {
 		IP.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("IP"));
 		CPU.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("CPU"));
 		RAM.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("RAM"));
-		online.setCellValueFactory(new PropertyValueFactory<CustomerModel, String>("online"));
+		online.setCellValueFactory(new PropertyValueFactory<CustomerModel, Boolean>("online"));
+
+		final Image onlineImage = new Image(getClass().getResource("/resources/online.png").toExternalForm());
+		final Image offlineImage = new Image(getClass().getResource("/resources/offline.png").toExternalForm());
+
+		online.setCellFactory(col -> new TableCell<CustomerModel, Boolean>() {
+
+			private ImageView imageView = new ImageView();
+			@Override
+			protected void updateItem(Boolean item, boolean empty) {
+				super.updateItem(item, empty);
+				if (empty || item == null) {
+					setText(null);
+					setGraphic(null);
+				} else {
+					if(item) {
+						imageView.setImage(onlineImage);
+					}
+					else {
+						imageView.setImage(offlineImage);
+					}
+					setGraphic(imageView);
+				}
+			}
+		});
 
 		minionId.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
 		hostName.prefWidthProperty().bind(tableMinions.widthProperty().divide(8));
